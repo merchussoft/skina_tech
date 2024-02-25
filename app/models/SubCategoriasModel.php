@@ -11,10 +11,10 @@ class SubCategoriasModel {
 
     function verSubCategorias($cod=0) {
         $adicional = ($cod) ? " AND sc.cod_sub_categorias = $cod" : "";
-        $sql = 'SELECT cod_sub_categorias, sub_categoria, sc.estado, sc.cod_categoria, c.categoria ';
+        $sql = 'SELECT cod_sub_categorias, sub_categoria, if(sc.estado=1, "activo", "inactivo") as active, sc.estado, sc.cod_categoria, c.categoria ';
         $sql .= ' FROM categorias c ';
         $sql .= ' INNER JOIN sub_categorias sc ON sc.cod_categoria = c.cod_categoria ';
-        $sql .= " WHERE c.estado =1 AND sc.estado = 1 AND sc.borrado= 1 $adicional ORDER BY sc.created_at DESC ";
+        $sql .= " WHERE c.estado =1 AND sc.borrado= 1 $adicional ORDER BY sc.created_at DESC ";
 
         return $this->__database->querySimple($sql);
     }

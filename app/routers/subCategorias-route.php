@@ -28,6 +28,8 @@ $app->post('/subcategorias/crear', function (Request $request, Response $respons
         ->write(json_encode($result));
 })->add($jwt_decode);
 
+
+
 $app->get('/subcategorias/delete/{cod}', function (Request $request, Response $response, $args) use ($sc_ci) {
     $result = $sc_ci->eliminarSubCategorias($args['cod']);
     return $response

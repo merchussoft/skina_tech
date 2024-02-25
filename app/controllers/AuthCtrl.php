@@ -16,7 +16,7 @@ class AuthCtrl {
         $validate  = $this->validarUsuario($data);
         if(isset($validate['passw']) && md5($data['password']) === $validate['passw']) {
             $tokenId    = base64_encode(random_bytes(32));
-            $expire     = time() + 600; // 10 minutos de tiempo de vida
+            $expire     = time() + 3600; // 10 minutos de tiempo de vida
 
             $payload = [
                 'jti'  => $tokenId, // ID único del token

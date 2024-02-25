@@ -14,12 +14,7 @@ class SubCategorias {
     }
 
     function guardarSubCategorias($data = []) {
-        $data_insert = [
-            'sub_categoria' => $data['nombre'],
-            'estado' => $data['activo'],
-            'cod_categoria' => $data['categoria']
-        ];
-        return General::ErrorMessageSave($this->__s_c_Model->guardarSubCategorias($data_insert));
+        return General::ErrorMessageSave($this->__s_c_Model->guardarSubCategorias($data));
     }
 
     function eliminarSubCategorias($cod = 0) {
